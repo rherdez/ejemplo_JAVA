@@ -262,6 +262,8 @@ public class principal extends javax.swing.JFrame {
         forma2 forma=new forma2(this.jTextField1.getText());
         //forma.recibir(this.jTextField1.getText());
         forma.jTextField1.setText(this.jTextField1.getText());
+        
+        forma.pantalla=this;
         forma.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -313,7 +315,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
+    public javax.swing.JTextField jTextField1;
     private javax.swing.JTextField txtN1;
     private javax.swing.JTextField txtN2;
     private javax.swing.JTextField txtRes;
