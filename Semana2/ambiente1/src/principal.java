@@ -259,7 +259,9 @@ public class principal extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        forma2 forma=new forma2();
+        forma2 forma=new forma2(this.jTextField1.getText());
+        //forma.recibir(this.jTextField1.getText());
+        forma.jTextField1.setText(this.jTextField1.getText());
         forma.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
