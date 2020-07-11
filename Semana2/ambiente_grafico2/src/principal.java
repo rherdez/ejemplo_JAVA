@@ -256,11 +256,9 @@ public class principal extends javax.swing.JFrame {
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
         empleado temp=new empleado();
-        
-       
+               
         for(int x=0;x<emp.size();x++){
-            for(int y=1;y<emp.size();y++){
-                JOptionPane.showMessageDialog(this, emp.get(y-1).getId());
+            for(int y=1;y<emp.size();y++){                
                 if(emp.get(y-1).getId()>emp.get(y).getId()){
                     temp.setId(emp.get(y-1).getId() );
                     temp.setNombre(emp.get(y-1).getNombre());
@@ -270,8 +268,7 @@ public class principal extends javax.swing.JFrame {
                     
                     emp.get(y).setId(temp.getId() );
                     emp.get(y).setNombre(temp.getNombre());                                        
-                }
-                
+                }                
             }
         }
             JOptionPane.showMessageDialog(this, "Ordenados");
