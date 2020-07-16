@@ -37,6 +37,8 @@ public ArrayList<empleado> empleados=new ArrayList();
         jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setExtendedState(6);
+        setFocusCycleRoot(false);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -99,7 +101,7 @@ public ArrayList<empleado> empleados=new ArrayList();
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -123,17 +125,22 @@ public ArrayList<empleado> empleados=new ArrayList();
         // TODO add your handling code here:
         iframe1 forma=new iframe1();
         forma.lista=empleados;
+        
         forma.show();
+        forma.setFocusable(true);
         
         this.jDesktopPane1.add(forma);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
+      
         iframe2 forma=new iframe2();
         forma.lista2=empleados;
         forma.show();
+         forma.setFocusable(true);
         this.jDesktopPane1.add(forma);
+        
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**

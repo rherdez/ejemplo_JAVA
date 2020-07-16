@@ -40,6 +40,7 @@ public class iframe1 extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setEnabled(false);
 
         jLabel1.setText("Frame Interno");
 
