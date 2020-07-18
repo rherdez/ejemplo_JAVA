@@ -40,7 +40,10 @@ public class iframe1 extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Internal 1");
+        setToolTipText("");
         setEnabled(false);
+        setName("Interno"); // NOI18N
 
         jLabel1.setText("Frame Interno");
 

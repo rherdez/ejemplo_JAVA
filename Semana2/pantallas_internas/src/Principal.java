@@ -8,7 +8,11 @@
  *
  * @author rober
  */
+import java.beans.PropertyVetoException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 public class Principal extends javax.swing.JFrame {
 
     /**
@@ -35,6 +39,8 @@ public ArrayList<empleado> empleados=new ArrayList();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(6);
@@ -91,6 +97,18 @@ public ArrayList<empleado> empleados=new ArrayList();
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setText("jMenu3");
+
+        jMenuItem5.setText("jMenuItem5");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem5);
+
+        jMenuBar1.add(jMenu3);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -125,11 +143,18 @@ public ArrayList<empleado> empleados=new ArrayList();
         // TODO add your handling code here:
         iframe1 forma=new iframe1();
         forma.lista=empleados;
-        
+       this.jDesktopPane1.add(forma);
         forma.show();
-        forma.setFocusable(true);
+        try {
+            forma.setMaximum(true);
+        //} catch (PropertyVetoException ex) {
+        }catch(Exception x){
+            //Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+       // forma.setFocusable(true);
         
-        this.jDesktopPane1.add(forma);
+        
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -137,11 +162,25 @@ public ArrayList<empleado> empleados=new ArrayList();
       
         iframe2 forma=new iframe2();
         forma.lista2=empleados;
-        forma.show();
-         forma.setFocusable(true);
         this.jDesktopPane1.add(forma);
+        forma.show();
+        // forma.setFocusable(true);        
+        
+         try {
+            forma.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        for(int i=0;i<this.jDesktopPane1.getAllFrames().length;i++){
+            JOptionPane.showMessageDialog(this,this.jDesktopPane1.getAllFrames()[i].getName());
+        }
+        
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,10 +221,12 @@ public ArrayList<empleado> empleados=new ArrayList();
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     // End of variables declaration//GEN-END:variables
 }
