@@ -18,6 +18,8 @@ public class C_app1 {
         // TODO code application logic here
         Scanner sc=new Scanner(System.in);
         int n;
+        
+        
         System.out.print("Ingrese un numero");
         n=sc.nextInt();
         System.out.println("El numero es: "+ n);
