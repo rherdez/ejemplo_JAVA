@@ -26,7 +26,9 @@ public class principal extends javax.swing.JFrame {
      */
     public principal() {
         initComponents();
+        model=(DefaultTableModel)jTable1.getModel();
     }
+    DefaultTableModel model;
     String  url="jdbc:sqlite:C://textos//bd_lina.db";
     Connection conector;
     /**
@@ -55,6 +57,11 @@ public class principal extends javax.swing.JFrame {
         });
 
         jButton2.setText("Presentar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Agregar");
 
@@ -67,13 +74,10 @@ public class principal extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Equipo"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -118,7 +122,6 @@ public class principal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             // TODO add your handling code here:
-
             conector=DriverManager.getConnection(url);
             JOptionPane.showMessageDialog(rootPane, "Conectado");
         } catch (SQLException ex) {
@@ -135,6 +138,28 @@ public class principal extends javax.swing.JFrame {
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String sql="select id_equipo, nombre_equipo from equipos";
+        ResultSet resul=null;               
+            PreparedStatement st;
+            try {
+                st = conector.prepareStatement(sql);
+                 resul=st.executeQuery();
+                                                
+            } catch (SQLException ex) {
+                Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+            }                       
+        try {
+            while(resul.next()){
+                model.addRow(new Object[]{resul.getInt("id_equipo"),resul.getString("nombre_equipo")});
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                                           
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
