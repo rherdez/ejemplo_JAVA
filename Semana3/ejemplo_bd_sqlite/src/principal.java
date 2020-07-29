@@ -328,7 +328,8 @@ public class principal extends javax.swing.JFrame {
     private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
         // TODO add your handling code here:
          model.setRowCount(0);
-        String sql="select id_equipo, nombre_equipo from equipos where nombre_equipo like '%"+this.jTextField2.getText()+"%'";
+    String sql=
+     "select id_equipo, nombre_equipo from equipos where nombre_equipo like '%"+this.jTextField2.getText()+"%'";
         ResultSet resul=null;               
             PreparedStatement st;
             try {
