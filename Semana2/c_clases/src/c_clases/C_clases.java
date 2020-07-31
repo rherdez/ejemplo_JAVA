@@ -17,7 +17,8 @@ public class C_clases {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner sc=new Scanner(System.in);
-        mouse klip=new mouse();
+        mouse klip=new mouse(2,2);
+    
         
         System.out.println("Ingrese Color Mouse");
         klip.set_color(sc.next());

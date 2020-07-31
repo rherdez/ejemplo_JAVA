@@ -13,6 +13,22 @@ public class mouse {
     String color;
     int N_botones;
     
+    public    mouse(String c, int n){
+        color=c;
+        N_botones=n;
+    }
+    
+     public    mouse(int c, int n){
+        color="";
+        N_botones=n;
+    }
+     
+    
+    public  mouse(){
+        color="";
+        N_botones=0;
+    }
+    
     public void set_color(String c){
         color=c;
     }
