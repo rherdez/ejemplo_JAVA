@@ -19,7 +19,7 @@ public class mouse {
     }
     
      public    mouse(int c, int n){
-        color="";
+        color=String.valueOf(c);
         N_botones=n;
     }
      
@@ -44,5 +44,7 @@ public class mouse {
     public int get_Nbotones(){
         return N_botones;
     }   
+    
+   
     
 }

@@ -17,17 +17,24 @@ public class C_clases {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner sc=new Scanner(System.in);
-        mouse klip=new mouse(2,2);
-    
+        mouse []klip=new mouse[2];
+     
+        for(int i=0;i<2;i++){
+            klip[i]=new mouse();
+            System.out.println("Ingrese Color Mouse");
+            klip[i].set_color(sc.next());
         
-        System.out.println("Ingrese Color Mouse");
-        klip.set_color(sc.next());
-        System.out.println("Ingrese Botones");
-        klip.set_Nbotones(sc.nextInt());
+            System.out.println("Ingrese Botones");
+            klip[i].set_Nbotones(sc.nextInt());
+        }
         ////
-        System.out.println("El color es: "+ klip.get_color());
-        System.out.println("El numero de botones es: "+klip.get_Nbotones());
-                     
+      
+      ///prsentar
+        
+      for(int i=0;i<2;i++){
+        System.out.println("El color es: "+ klip[i].get_color());
+        System.out.println("El numero de botones es: "+klip[i].get_Nbotones());
+      }
         
     }
     
