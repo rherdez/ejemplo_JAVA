@@ -3,13 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.FileSystems;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import mi_libreria.Mi_libreria;
+
+
 /**
  *
  * @author rober
@@ -43,6 +49,8 @@ DefaultTableModel model;
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -103,6 +111,20 @@ DefaultTableModel model;
             }
         });
 
+        jButton1.setText("Abrir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("jButton5");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -114,7 +136,9 @@ DefaultTableModel model;
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2)
                             .addComponent(jButton3)
-                            .addComponent(jButton4)))
+                            .addComponent(jButton4)
+                            .addComponent(jButton1)
+                            .addComponent(jButton5)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addComponent(jLabel1)))
@@ -141,7 +165,11 @@ DefaultTableModel model;
                 .addComponent(jButton3)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -206,6 +234,41 @@ DefaultTableModel model;
            presentar();
     }//GEN-LAST:event_jTextField1KeyReleased
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         String aux="";
+      
+        try{
+            
+            JFileChooser file=new JFileChooser();
+            file.showOpenDialog(this);
+            File abre=file.getSelectedFile();
+            aux=abre.getPath();
+            
+            lb.setUrl("jdbc:sqlite:"+aux);
+            JOptionPane.showMessageDialog(this, aux);
+        }
+        catch(Exception x){
+            JOptionPane.showMessageDialog(null, "error"+x.toString());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+         String current;
+        try {
+            current = new java.io.File( "." ).getCanonicalPath();
+           
+             current+="//bd_lina.db";
+              lb.setUrl("jdbc:sqlite:"+ current);
+              
+                JOptionPane.showMessageDialog(null, lb.getUrl());
+        } catch (IOException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -242,9 +305,11 @@ DefaultTableModel model;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
