@@ -13,6 +13,11 @@ public class padre extends abuelo  {
     int edad_padre;
     String nombre_padre;
 
+    public padre(String n,String k){
+        super(n);
+        nombre_padre=k;
+        
+    }
     public int getEdad_padre() {
         return edad_padre;
     }

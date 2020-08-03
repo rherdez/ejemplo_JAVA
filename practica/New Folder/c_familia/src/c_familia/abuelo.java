@@ -13,7 +13,9 @@ package c_familia;
 public class abuelo {
      int edad;
      String nombre_abuelo;
-     
+     public abuelo(String h){
+         nombre_abuelo=h;
+     }
      
     public int getEdad() {
         return edad;

@@ -16,19 +16,23 @@ public class C_familia {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        padre jose= new padre();
+        hijo  jose= new hijo ("Abuelossss","Papasssssss");
+        padre papa=new padre("ss","");
         
-        jose.setNombreAbuelo("Jose Francisco Lopez");
+       // jose.setNombreAbuelo("Jose Francisco Lopez");
         jose.setEdad(80);
         
         System.out.println("Nombre: "+jose.getNombreAbuelo());
         System.out.println("Edad: "+jose.getEdad());
         
         jose.setEdad_padre(40);
-        jose.setNombre_padre("Chepito Pancho Lopez");
+       // jose.setNombre_padre("Chepito Pancho Lopez");
         
         System.out.println("Nombre Padre: "+jose.getNombre_padre() );
         System.out.println("Edad Padre: "+jose.getEdad_padre());
+        
+        jose.herramienta_padre();
+        papa.herramienta_padre();
         
     }
     
