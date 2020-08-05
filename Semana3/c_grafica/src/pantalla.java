@@ -157,7 +157,9 @@ public class pantalla extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtN1.setText("Hola Mundo");
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    public String texto(){
+        return Resultado.getText();
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
        /* int n1,n2,n3;
@@ -202,9 +204,11 @@ public class pantalla extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         
-        pantalla2 forma=new pantalla2();
+     //   pantalla2 forma=new pantalla2(Resultado.getText());
+      pantalla2 forma=new pantalla2();
         forma.setVisible(true);
-        this.setVisible(false);
+        forma.padre=this;
+        //this.setVisible(false);
         
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -244,7 +248,7 @@ public class pantalla extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Resultado;
+    public javax.swing.JTextField Resultado;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

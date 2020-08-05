@@ -126,6 +126,9 @@
     <Component class="javax.swing.JTextField" name="txtN2">
     </Component>
     <Component class="javax.swing.JTextField" name="Resultado">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
