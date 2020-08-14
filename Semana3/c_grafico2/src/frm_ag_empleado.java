@@ -23,6 +23,7 @@ public class frm_ag_empleado extends javax.swing.JFrame {
     }
      ArrayList<clase_empleado> arreglo=new ArrayList();
      DefaultTableModel model;
+     int x;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -272,7 +273,7 @@ void presentar(int i){
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-       int x=this.jTable1.getSelectedRow();
+      // int x=this.jTable1.getSelectedRow();
        arreglo.get(x).setId(Integer.valueOf(this.jTextField1.getText()));
        arreglo.get(x).setNombre(this.jTextField2.getText());
        
@@ -282,7 +283,7 @@ void presentar(int i){
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-        int x=this.jTable1.getSelectedRow();
+       x=this.jTable1.getSelectedRow();
         
         this.jTextField1.setText(model.getValueAt(x, 0).toString());
         this.jTextField2.setText(model.getValueAt(x, 1).toString());
@@ -291,7 +292,7 @@ void presentar(int i){
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-         int x=this.jTable1.getSelectedRow();
+        // int x=this.jTable1.getSelectedRow();
         this.arreglo.remove(x);
         this.model.removeRow(x);
         limpiar();
