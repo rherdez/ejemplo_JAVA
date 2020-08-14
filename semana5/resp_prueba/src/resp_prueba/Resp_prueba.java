@@ -68,8 +68,7 @@ public class Resp_prueba {
                                  ac[y].setTarea(temp.getTarea());
                                  ac[y].setPrioridad(temp.getPrioridad());                                                                                                   
                                  
-                             }
-                             
+                             }                             
                          }
                      }
                     break;
@@ -77,9 +76,7 @@ public class Resp_prueba {
                     break;
                 default:
                     System.out.println("Opcion no valida");
-            }
-            
-            
+            }                        
         }while(op!=0);
         
     }

@@ -11,7 +11,10 @@ package resp_prueba;
  */
 public class jornada {
     String nombre_jornada;
-
+    
+    public jornada(String n){
+        nombre_jornada=n;
+    }
     public String getNombre_jornada() {
         return nombre_jornada;
     }
@@ -20,7 +23,5 @@ public class jornada {
         this.nombre_jornada = nombre_jornada;
     }
     
-    public jornada(String n){
-        nombre_jornada=n;
-    }
+   
 }
