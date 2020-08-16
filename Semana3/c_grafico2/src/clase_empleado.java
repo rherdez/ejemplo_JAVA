@@ -11,7 +11,15 @@
 public class clase_empleado {
     int id;
     String nombre;
+    boolean activo;
 
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
     public int getId() {
         return id;
     }
