@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import java.awt.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionListener;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -26,8 +30,17 @@ public class pantalla extends javax.swing.JFrame {
     public pantalla() {
         initComponents();
     }
+    ArrayList<String> lista=new ArrayList();
      String  url="jdbc:sqlite:C://temp//bd_lina1.db";
     Connection conector;
+   
+    public void recorrer(){
+        lista.clear();
+        for(String t:this.jList2.getSelectedValuesList()){
+            lista.add(t);
+        }
+    }
+    
 public void conectar(){
          try {         
             conector=DriverManager.getConnection(url);
@@ -35,6 +48,7 @@ public void conectar(){
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error: "+ ex.getMessage().toString());
         }
+         
    }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,8 +61,15 @@ public void conectar(){
 
         jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jButton1.setText("Presentar Reporte");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -57,16 +78,28 @@ public void conectar(){
             }
         });
 
+        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "1", "2", "3", "4", "5", "6", "7", "8" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(108, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(jButton1)
-                .addGap(35, 35, 35))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(jButton1)
+                        .addGap(35, 35, 35))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -75,7 +108,9 @@ public void conectar(){
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(256, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         pack();
@@ -83,22 +118,33 @@ public void conectar(){
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+      
         try{
             conectar();
-            JasperReport reporte=(JasperReport)JRLoader.loadObject("C:\\temp\\rep_equipos.jasper");
+            JasperReport reporte=(JasperReport)JRLoader.loadObject("C:\\Users\\rober\\OneDrive\\Documentos\\NetBeansProjects\\Ejemplo_JAVA\\semana5\\proyecto_reporte2\\src\\rep_equipos.jasper");
+           // JasperReport reporte=(JasperReport)JRLoader.loadObject("C:\\temp\\rep_equipos.jasper");
+              //JasperReport reporte=(JasperReport)JRLoader.loadObject("C:\\Users\rober\OneDrive\Documentos\NetBeansProjects\Ejemplo_JAVA\semana5\proyecto_reporte2\src\rep_equipos.jrxml");
             Map parametro=new HashMap();
-            parametro.put("cod",this.jTextField1.getText().toString());
+          recorrer();
+            //parametro.put("cod",this.jTextField1.getText().toString());
+             parametro.put("codigos", lista);
+            
             JasperPrint imp=JasperFillManager.fillReport(reporte,parametro,conector);
+          
             JasperViewer vista=new JasperViewer(imp,false);
             vista.setVisible(true);
-            
+           conector.close();
         }
         catch(Exception x){
             System.out.println("Error "+x);
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+      //  jList1.setSelectionMode(2);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -137,6 +183,8 @@ public void conectar(){
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JList<String> jList2;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

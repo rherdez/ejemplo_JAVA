@@ -3,11 +3,11 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="cod" class="java.lang.String">
+	<parameter name="codigos" class="java.util.Collection">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select id_equipo, nombre_equipo from equipos where id_equipo in(1,2, $P{cod})]]>
+		<![CDATA[select id_equipo, nombre_equipo from equipos where $X{IN,id_equipo,codigos}]]>
 	</queryString>
 	<field name="id_equipo" class="java.lang.Object"/>
 	<field name="nombre_equipo" class="java.lang.Object"/>
@@ -21,7 +21,7 @@
 				<textElement textAlignment="Center">
 					<font size="24" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Temporada 2019-2020]]></text>
+				<text><![CDATA[Temporada 2019-2021]]></text>
 			</staticText>
 		</band>
 	</title>
