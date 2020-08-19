@@ -6,8 +6,11 @@
 	<parameter name="codigos" class="java.util.Collection">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="or" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[select id_equipo, nombre_equipo from equipos where $X{IN,id_equipo,codigos}]]>
+		<![CDATA[select id_equipo, nombre_equipo from equipos where $X{IN,id_equipo,codigos} order by $P!{or} desc]]>
 	</queryString>
 	<field name="id_equipo" class="java.lang.Object"/>
 	<field name="nombre_equipo" class="java.lang.Object"/>
