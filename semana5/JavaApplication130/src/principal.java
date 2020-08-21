@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import java.util.ArrayList;
+
 /**
  *
  * @author rober
@@ -16,8 +16,7 @@ public class principal extends javax.swing.JFrame {
     public principal() {
         initComponents();
     }
-ArrayList<jugadores> lista=new ArrayList();
-  
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,28 +29,19 @@ ArrayList<jugadores> lista=new ArrayList();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("File");
+        jMenu1.setText("Repaso");
 
-        jMenuItem1.setText("CRUD");
+        jMenuItem1.setText("Internal Frame");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
             }
         });
         jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("Presentar");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
 
@@ -76,17 +66,9 @@ ArrayList<jugadores> lista=new ArrayList();
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-      Mant_Jugadores forma=new Mant_Jugadores();
-        forma.lista=this.lista;
+        pantalla1 forma=new pantalla1();
         forma.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-        frm_presentar forma=new frm_presentar();
-        forma.lista=this.lista;
-        forma.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,6 +110,5 @@ ArrayList<jugadores> lista=new ArrayList();
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }

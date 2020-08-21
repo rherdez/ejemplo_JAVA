@@ -16,7 +16,7 @@ public class Mant_Jugadores extends javax.swing.JFrame {
     public Mant_Jugadores() {
         initComponents();
     }
-public ArrayList<jugadores> lista;
+public ArrayList<jugadores> lista=new ArrayList();
     int pos=0;
     
     void presentar(int x){
