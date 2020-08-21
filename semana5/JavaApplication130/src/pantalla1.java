@@ -73,8 +73,8 @@ public class pantalla1 extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCheckBox1))
+                            .addComponent(jCheckBox1)
+                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(74, 74, 74))))
         );
         layout.setVerticalGroup(
@@ -100,10 +100,13 @@ public class pantalla1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
  pantalla2 forma=new pantalla2();
+ persona p=new persona();
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       
-        forma.recibir(this.jTextField1.getText(),Integer.valueOf(this.jSpinner1.getValue().toString()),this.jCheckBox1.isSelected());
+       p.setNom(this.jTextField1.getText());
+       p.setEd(Integer.valueOf(this.jSpinner1.getValue().toString()));
+       p.setAct(this.jCheckBox1.isSelected());
+        forma.recibir(p);
         forma.setVisible(true);
         this.jTextField1.setText("");
         this.jSpinner1.setValue(0);

@@ -19,8 +19,8 @@ public class pantalla2 extends javax.swing.JFrame {
         model=(DefaultTableModel) this.jTable1.getModel();
     }
 DefaultTableModel model;
-    public void recibir(String x, int y, boolean z ){
-        model.addRow(new Object[]{x,y,z});
+    public void recibir(persona x){
+        model.addRow(new Object[]{x.nom,x.ed,x.act});
         
     }
     /**

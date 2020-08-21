@@ -9,5 +9,32 @@
  * @author rober
  */
 public class persona {
+    String nom;
+    int ed;
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public int getEd() {
+        return ed;
+    }
+
+    public void setEd(int ed) {
+        this.ed = ed;
+    }
+
+    public boolean isAct() {
+        return act;
+    }
+
+    public void setAct(boolean act) {
+        this.act = act;
+    }
+    boolean act;
     
 }

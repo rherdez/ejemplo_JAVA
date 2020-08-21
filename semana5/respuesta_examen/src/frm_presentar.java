@@ -106,10 +106,10 @@ DefaultTableModel model1;
     
     }
     
-        void presentar3(){
+    void presentar3(){
        model1.setNumRows(0);
             
-       if(lista.size()>3){
+   //    if(lista.size()>3){
         for(int i=0;i<3;i++){
                 model1.addRow(new Object[]{
                     lista.get(i).getId(),
@@ -119,10 +119,10 @@ DefaultTableModel model1;
                     lista.get(i).isActivo()                
                 });
         }
-       }
+ /*      }
        else{
            presentar();
-       }
+       }*/
     
     }
      void ordenar(){
@@ -130,7 +130,6 @@ DefaultTableModel model1;
         for(int i=0;i<lista.size();i++){
             for(int x=1;x<lista.size();x++){
                 if(lista.get(x-1).getSueldo()<lista.get(x).getSueldo()){
-                    
                     temp.setId(lista.get(x-1).getId());
                     temp.setNombre(lista.get(x-1).getNombre());
                     temp.setSueldo(lista.get(x-1).getSueldo());
@@ -147,13 +146,8 @@ DefaultTableModel model1;
                     lista.get(x).setNombre(temp.getNombre());
                     lista.get(x).setSueldo(temp.getSueldo());
                     lista.get(x).setPos(temp.getPos());
-                    lista.get(x).setActivo(temp.isActivo());
-                    
-                    
-                    
-                    
-                }
-             
+                    lista.get(x).setActivo(temp.isActivo());                                                                
+                }             
             }
         }
     
