@@ -109,7 +109,7 @@ DefaultTableModel model1;
     void presentar3(){
        model1.setNumRows(0);
             
-   //    if(lista.size()>3){
+       if(lista.size()>3){
         for(int i=0;i<3;i++){
                 model1.addRow(new Object[]{
                     lista.get(i).getId(),
@@ -119,10 +119,10 @@ DefaultTableModel model1;
                     lista.get(i).isActivo()                
                 });
         }
- /*      }
+      }
        else{
            presentar();
-       }*/
+       }
     
     }
      void ordenar(){
