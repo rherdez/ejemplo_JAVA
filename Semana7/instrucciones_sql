@@ -1,0 +1,20 @@
+select A.id_categoria,A.nombre_cate, count(*),sum(cantidad),avg(precio), sum(cantidad*costo) as inv from 
+    producto P
+      inner join 
+    categorias A
+        on 
+     P.id_categoria=A.id_categoria 
+group by A.id_categoria,A.nombre_cate
+
+/*select * from categorias
+insert into categorias(nombre_cate) values ('Carnes')
+select * from producto*/
+/*insert into producto(nombre_producto, cantidad, costo , precio) values('Arroz', 96,5,10)*/
+
+
+
+
+     
+    
+
+
