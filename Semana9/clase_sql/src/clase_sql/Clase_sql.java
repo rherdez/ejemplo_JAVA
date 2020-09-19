@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -77,7 +78,10 @@ public class Clase_sql {
      } catch (SQLException ex) {
          Logger.getLogger(Clase_sql.class.getName()).log(Level.SEVERE, null, ex);
      }
-        
+     catch (Exception x) {
+         //Logger.getLogger(Clase_sql.class.getName()).log(Level.SEVERE, null, x);
+         conectar();
+     }  
         
     }
     public void actoins(String sql){
