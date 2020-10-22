@@ -49,6 +49,11 @@ frm_uno forma;
         jLabel2.setText("Enviar a pantalla 1");
 
         jButton1.setText("Enviar Pantalla 1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,6 +99,11 @@ frm_uno forma;
         // TODO add your handling code here:
         this.jTextField1.setText(forma.jTextField1.getText());
     }//GEN-LAST:event_formWindowOpened
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        forma.jTextField2.setText(this.jTextField2.getText());
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void enviar(String x){
             this.jTextField1.setText(x);
