@@ -74,7 +74,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setText("jMenuItem2");
+        jMenuItem2.setText("PDF");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -122,6 +122,12 @@ public class Principal extends javax.swing.JFrame {
        /*   URL url = new URL("http://today.java.net/jag/bio/JagHeadshot.jpg");
         BufferedImage image = ImageIO.read(url);
        this.jDesktopPane1.setBorder(new CentredBackgroundBorder(image));*/
+        producto.frm_pdf forma=new producto.frm_pdf();
+        this.jDesktopPane1.add(forma);
+          Dimension desktopSize = this.jDesktopPane1.getSize();
+        Dimension FrameSize = forma.getSize();
+        forma.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        forma.setVisible(true);
         
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 

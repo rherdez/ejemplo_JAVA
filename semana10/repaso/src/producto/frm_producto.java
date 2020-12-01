@@ -5,7 +5,15 @@
  */
 package producto;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import java.sql.ResultSet;
+
 
 /**
  *
@@ -39,6 +47,7 @@ public class frm_producto extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -115,6 +124,13 @@ public class frm_producto extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton4.setText("PDF");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,17 +145,18 @@ public class frm_producto extends javax.swing.JInternalFrame {
                         .addGap(23, 23, 23)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jButton1)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -151,7 +168,9 @@ public class frm_producto extends javax.swing.JInternalFrame {
                         .addGap(26, 26, 26)
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3))))
+                        .addComponent(jButton3)
+                        .addGap(28, 28, 28)
+                        .addComponent(jButton4))))
         );
 
         pack();
@@ -211,11 +230,68 @@ public class frm_producto extends javax.swing.JInternalFrame {
         con.Cerrar();
     }//GEN-LAST:event_jTextField1KeyReleased
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        ResultSet rs;
+        int linea=0;
+        
+        try{
+              linea++;
+            PDDocument documento=new PDDocument();
+            PDPage pagina=new PDPage(PDRectangle.A6);
+            
+            documento.addPage(pagina);
+            
+            PDPageContentStream contenido=new PDPageContentStream(documento,pagina);
+            
+                    contenido.beginText();
+                    contenido.setFont(PDType1Font.COURIER, 18);
+                    contenido.newLineAtOffset(5, pagina.getMediaBox().getHeight()-(20*linea));
+                    contenido.showText("REPORTE MENSUAL DE PRODUCTOS");
+                    contenido.endText();
+        
+            con.Abrir();
+            linea++;
+          
+            rs=con.Seleccionar("select * from productos where nom_prod like '"+ this.jTextField1.getText()+ "%'  order by id_prod asc");
 
+                while(rs.next()){
+                    linea++;
+                    contenido.beginText();
+                    contenido.setFont(PDType1Font.COURIER, 12);
+                    contenido.newLineAtOffset(30, pagina.getMediaBox().getHeight()-(20*linea));
+                    contenido.showText(rs.getString("id_prod")+" "+rs.getString("nom_prod")+relleno(rs.getString("nom_prod")) +" "+rs.getString("sexo"));
+                    contenido.endText();
+                }
+            con.Cerrar();
+            
+            contenido.close();
+            
+            documento.save("C:\\textos\\pdf.pdf");
+            JOptionPane.showMessageDialog(this,"PDF Generado");
+       }
+        catch(Exception x){
+            JOptionPane.showMessageDialog(this, "error"+x.getMessage().toString());
+        }
+        
+        
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+String relleno(String x){
+    String texto="";
+    
+    for(int i=x.length();i<15;i++){
+        texto+=" ";
+    }
+    return texto;
+}
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
