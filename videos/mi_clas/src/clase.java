@@ -29,7 +29,7 @@ public class clase {
     }
     
      String url="jdbc:sqlite:C:/temp/inventario.db";
-     Connection connect;
+     public Connection connect;
      
      public void abrir(){
            try{

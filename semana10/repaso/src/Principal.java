@@ -122,7 +122,7 @@ public class Principal extends javax.swing.JFrame {
        /*   URL url = new URL("http://today.java.net/jag/bio/JagHeadshot.jpg");
         BufferedImage image = ImageIO.read(url);
        this.jDesktopPane1.setBorder(new CentredBackgroundBorder(image));*/
-        producto.frm_pdf forma=new producto.frm_pdf();
+        producto.frm_reporte forma=new producto.frm_reporte();
         this.jDesktopPane1.add(forma);
           Dimension desktopSize = this.jDesktopPane1.getSize();
         Dimension FrameSize = forma.getSize();

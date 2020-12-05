@@ -25,7 +25,7 @@ public class Conecto_sql {
     
         URL="jdbc:sqlite:C:/data/escueladb.db";
     }
-    Connection con;
+   public  Connection con;
     DefaultTableModel model;
     
     String URL;
