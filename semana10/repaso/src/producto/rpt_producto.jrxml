@@ -3,11 +3,11 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="pid" class="java.lang.Integer">
+	<parameter name="pid" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select id_prod, nom_prod,sexo from productos where id_prod=$P{pid}]]>
+		<![CDATA[select id_prod, nom_prod,sexo from productos  where nom_prod =  $P{pid}   order by id_prod asc]]>
 	</queryString>
 	<field name="id_prod" class="java.lang.Object"/>
 	<field name="nom_prod" class="java.lang.Object"/>
