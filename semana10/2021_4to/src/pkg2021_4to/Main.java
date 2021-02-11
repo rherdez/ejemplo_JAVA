@@ -26,7 +26,14 @@ public class Main {
         p.set_nombre(sc.next());
         System.out.println("Ingrese Edad: ");
         p.setEdad(sc.nextInt());
+        System.out.println("Ingrese Carros: ");
+        p.setCarros(sc.nextInt());
+        grupo.add(p);
         
+    }
+      
+    static void agregar2(){
+         persona p=new persona("superblanco",2);                
         grupo.add(p);
         
     }
@@ -35,6 +42,7 @@ public class Main {
             System.out.println((i+1)+")====================================");
             System.out.println("Nombre: "+grupo.get(i).get_nombre());
             System.out.println("Edad: "+grupo.get(i).getEdad());
+            System.out.println("Carros: "+grupo.get(i).getCarros());
             
         }        
     }
@@ -70,6 +78,7 @@ public class Main {
            System.out.println("1) Agregar");
            System.out.println("2) Presentar");
            System.out.println("3) Eliminar");
+           System.out.println("4) Prueba");
            System.out.println("0) Salir");
            op=sc.nextInt();
            
@@ -82,6 +91,9 @@ public class Main {
                    break;
                case 3:
                    eliminar();
+                   break;
+               case 4:
+                   agregar2();
                    break;
                case 0:
                    break;
